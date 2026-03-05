@@ -23,6 +23,10 @@ spec:
       protocol: TCP
       port: 4318
       targetPort: 4318
+    - name: tempo
+      protocol: TCP
+      port: 3200
+      targetPort: 3200
     - name: prometheus
       protocol: TCP
       port: 9090
@@ -50,6 +54,7 @@ spec:
             - containerPort: 4040
             - containerPort: 4317
             - containerPort: 4318
+            - containerPort: 3200
             - containerPort: 9090
           readinessProbe:
             exec:

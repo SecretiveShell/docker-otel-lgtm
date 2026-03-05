@@ -144,6 +144,16 @@ for example, to authenticate with the backend.
 
 You can find the values for the environment variables in your [Grafana Cloud account][otel-setup].
 
+### Tempo MCP server
+
+The embedded Tempo MCP server is enabled by default in this image and is served on Tempo's HTTP API endpoint:
+
+```txt
+http://127.0.0.1:3200/api/mcp
+```
+
+The `run-lgtm` scripts expose port `3200` by default.
+
 ### Persist data across container instantiation
 
 The various components in the repository are configured to write their data to the `/data`
@@ -165,7 +175,7 @@ See the [Grafana documentation][grafana-preinstall-plugins] for more information
 kubectl apply -f k8s/lgtm.yaml
 
 # Configure port forwarding
-kubectl port-forward service/lgtm 3000:3000 4040:4040 4317:4317 4318:4318 9090:9090
+kubectl port-forward service/lgtm 3000:3000 4040:4040 4317:4317 4318:4318 3200:3200 9090:9090
 
 # Using mise
 mise k8s-apply
